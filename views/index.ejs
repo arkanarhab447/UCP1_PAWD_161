@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rekam Medis</title>
+  <style>
+    body { font-family: Arial, sans-serif; background-color: #f4f4f4; }
+    header { background-color: #333; color: white; padding: 10px; text-align: center; }
+    table { width: 80%; margin: 20px auto; border-collapse: collapse; }
+    th, td { padding: 10px; text-align: left; border: 1px solid #ddd; }
+    th { background-color: #333; color: white; }
+    .button { padding: 8px 16px; margin: 5px; color: white; background-color: #28a745; border: none; cursor: pointer; }
+    .button-edit { background-color: #ffc107; }
+    .button-delete { background-color: #dc3545; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Rekam Medis</h1>
+</header>
+
+<!-- Add Record Form -->
+<h2>Add New Record</h2>
+<form method="post" action="/add">
+  Nomor RM: <input type="text" name="nomor_rm" required><br>
+  Nama: <input type="text" name="nama" required><br>
+  Alamat: <textarea name="alamat" required></textarea><br>
+  <input type="submit" value="Add Record">
+</form>
+
+<!-- Display Records -->
+<h2>Records</h2>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Nomor RM</th>
+    <th>Nama</th>
+    <th>Alamat</th>
+    <th>Actions</th>
+  </tr>
+  <% records.forEach(record => { %>
+    <tr>
+      <td><%= record.id %></td>
+      <td><%= record.nomor_rm %></td>
+      <td><%= record.nama %></td>
+      <td><%= record.alamat %></td>
+      <td>
+        <a href="/edit/<%= record.id %>" class="button button-edit">Edit</a>
+        <a href="/delete/<%= record.id %>" class="button button-delete">Delete</a>
+      </td>
+    </tr>
+  <% }); %>
+</table>
+
+</body>
+</html>

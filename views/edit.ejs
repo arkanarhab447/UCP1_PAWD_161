@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Record</title>
+  <style>
+    body { font-family: Arial, sans-serif; background-color: #f4f4f4; }
+    header { background-color: #333; color: white; padding: 10px; text-align: center; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Edit Record</h1>
+</header>
+
+<!-- Edit Record Form -->
+<h2>Update Record</h2>
+<form method="post" action="/update/<%= record.id %>">
+  Nomor RM: <input type="text" name="nomor_rm" value="<%= record.nomor_rm %>" required><br>
+  Nama: <input type="text" name="nama" value="<%= record.nama %>" required><br>
+  Alamat: <textarea name="alamat" required><%= record.alamat %></textarea><br>
+  <input type="submit" value="Update Record">
+</form>
+
+</body>
+</html>
